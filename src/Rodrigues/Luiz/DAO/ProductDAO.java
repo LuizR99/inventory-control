@@ -85,8 +85,14 @@ public class ProductDAO {
         }
     }
 
-    public void delete() throws SQLException {
+    public void delete(Integer id) throws SQLException {
+        String sql = "DELETE FROM PRODUCT WHERE ID = ?";
 
+        try (PreparedStatement pstm = connection.prepareStatement(sql)) {
+            pstm.setInt(1, id);
+
+            pstm.execute();
+        }
     }
 
     public List<Product> list() throws SQLException {

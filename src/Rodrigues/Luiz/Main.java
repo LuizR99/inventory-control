@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
 
-        Product cookie = new Product("cookie", "un",20.0, 40.0);
+        Product cookie = new Product("cafe", "kg",12.0, 50.0);
 
         try(Connection connection = new ConnectionDAO().connect()) {
             ProductDAO productDao = new ProductDAO(connection);
@@ -25,6 +25,12 @@ public class Main {
             productDao.update(20.0, 2);
 
             productDao.searchName("milk");
+
+            productDao.searchId(1);
+
+            productDao.delete(1);
+
+            productDao.save(cookie);
 
             productDao.searchId(1);
         }
